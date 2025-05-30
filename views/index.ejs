@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Soccer Matches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .match-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .teams {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .date {
+            color: #666;
+        }
+        .venue {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .status {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upcoming EPL Matches</h1>
+    
+    <% if (error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (matches && matches.length > 0) { %>
+        <% matches.forEach(match => { %>
+            <div class="match-card">
+                <div class="teams">
+                    <%= match.homeTeam %> vs <%= match.awayTeam %>
+                </div>
+                <div class="date">
+                    <%= match.date %>
+                </div>
+                <div class="venue">
+                    <%= match.venue %>
+                </div>
+                <div class="status">
+                    Status: <%= match.status %>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No upcoming matches found.</p>
+    <% } %>
+</body>
+</html> 
